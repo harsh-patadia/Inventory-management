@@ -23,13 +23,15 @@ import {
 import type { RootState } from '../../store';
 import { setProducts } from '../../store/slices/productSlice';
 import { setCategories } from '../../store/slices/categorySlice';
+import { setSubCategories } from '../../store/slices/subCategorySlice';
 import { setUsers, setRoles } from '../../store/slices/userSlice';
-import { sampleProducts, sampleCategories, sampleUsers, sampleRoles } from '../../store/staticData';
+import { sampleProducts, sampleCategories, sampleSubCategories, sampleUsers, sampleRoles } from '../../store/staticData';
 
 const Dashboard: React.FC = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state: RootState) => state.products);
   const { categories } = useSelector((state: RootState) => state.categories);
+  const { subCategories } = useSelector((state: RootState) => state.subCategories);
   const { users } = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
@@ -40,12 +42,15 @@ const Dashboard: React.FC = () => {
     if (categories.length === 0) {
       dispatch(setCategories(sampleCategories));
     }
+    if (subCategories.length === 0) {
+      dispatch(setSubCategories(sampleSubCategories));
+    }
     if (users.length === 0) {
       dispatch(setUsers(sampleUsers));
     }
     // Initialize roles if not already loaded
     dispatch(setRoles(sampleRoles));
-  }, [dispatch, products.length, categories.length, users.length]);
+  }, [dispatch, products.length, categories.length, subCategories.length, users.length]);
 
   // Update low stock products when products change
   useEffect(() => {
