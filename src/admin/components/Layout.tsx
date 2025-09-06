@@ -29,8 +29,7 @@ import {
   People as PeopleIcon,
   Settings as SettingsIcon,
   Logout as LogoutIcon,
-  Notifications as NotificationsIcon,
-  AccountCircle as AccountCircleIcon,
+  Notifications as NotificationsIcon
 } from '@mui/icons-material';
 import type { RootState } from '../../store';
 import { clearCurrentUser } from '../../store/slices/userSlice';
